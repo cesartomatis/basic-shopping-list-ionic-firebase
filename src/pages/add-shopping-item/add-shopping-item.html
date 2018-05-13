@@ -16,16 +16,22 @@
 <ion-content padding>
   <ion-item>
     <ion-label stacked>Name</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input type="text"
+      [(ngModel)]="item.name"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label stacked>Quantity</ion-label>
-    <ion-input type="number"></ion-input>
+    <ion-input type="number"
+      [(ngModel)]="item.quantity"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label stacked>Price</ion-label>
-    <ion-input type="number"></ion-input>
+    <ion-input type="number"
+      [(ngModel)]="item.price"></ion-input>
   </ion-item>
+
+  {{item | json}}
+
   <button ion-button
     col-4
     offset-4
