@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { Item } from '../../models/item/item.model';
+import { ShoppingListService } from '../../services/shopping-list/shopping-list.service';
 
 /**
  * Generated class for the AddShoppingItemPage page.
@@ -20,10 +21,17 @@ export class AddShoppingItemPage {
     name: '',
     quantity: undefined
   };
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private svShoppingList: ShoppingListService
+  ) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddShoppingItemPage');
   }
-  onAddItem() {}
+  async onAddItem(item: Item) {
+    let ref = await this.svShoppingList.addItem(item);
+    this.navCtrl.setRoot('HomePage', { key: ref.key });
+  }
 }
