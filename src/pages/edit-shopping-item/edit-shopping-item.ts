@@ -6,7 +6,7 @@ import { ShoppingListService } from '../../services/shopping-list/shopping-list.
 import { ToastService } from '../../services/toast/toast.service';
 
 /**
- * Generated class for the AddShoppingItemPage page.
+ * Generated class for the EditShoppingItemPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -14,14 +14,12 @@ import { ToastService } from '../../services/toast/toast.service';
 
 @IonicPage()
 @Component({
-  selector: 'page-add-shopping-item',
-  templateUrl: 'add-shopping-item.html'
+  selector: 'page-edit-shopping-item',
+  templateUrl: 'edit-shopping-item.html'
 })
-export class AddShoppingItemPage {
-  item: Item = {
-    name: '',
-    quantity: undefined
-  };
+export class EditShoppingItemPage {
+  item: Item;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -29,12 +27,13 @@ export class AddShoppingItemPage {
     private svToast: ToastService
   ) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AddShoppingItemPage');
+  ionViewWillLoad() {
+    this.item = this.navParams.get('item');
   }
-  async onAddItem(item: Item) {
-    let ref = await this.svShoppingList.addItem(item);
-    this.svToast.show(`${item.name} added!`);
-    this.navCtrl.setRoot('HomePage', { key: ref.key });
+
+  async onEditItem(item: Item) {
+    await this.svShoppingList.editItem(item);
+    this.svToast.show(`${item.name} has been saved!`);
+    this.navCtrl.setRoot('HomePage');
   }
 }

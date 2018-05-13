@@ -24,7 +24,7 @@ export class HomePage {
     private svShoppingList: ShoppingListService
   ) {}
 
-  ionViewDidLoad() {
+  ionViewWillLoad() {
     this.shoppingList$ = this.svShoppingList
       .getShoppingList() // returns de DB List
       .snapshotChanges() // returns the key value pairs
