@@ -7,12 +7,30 @@
 <ion-header>
 
   <ion-navbar color="gold">
-    <ion-title>AddShoppingItem</ion-title>
+    <ion-title>Add Item</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-item>
+    <ion-label stacked>Name</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Quantity</ion-label>
+    <ion-input type="number"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Price</ion-label>
+    <ion-input type="number"></ion-input>
+  </ion-item>
+  <button ion-button
+    col-4
+    offset-4
+    outline
+    center
+    color="dark-grey"
+    (click)="onAddItem()">Add</button>
 </ion-content>
