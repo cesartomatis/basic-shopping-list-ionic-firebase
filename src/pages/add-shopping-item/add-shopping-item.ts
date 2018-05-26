@@ -20,7 +20,8 @@ import { ToastService } from '../../services/toast/toast.service';
 export class AddShoppingItemPage {
   item: Item = {
     name: '',
-    quantity: undefined
+    quantity: undefined,
+    done: false
   };
   constructor(
     public navCtrl: NavController,

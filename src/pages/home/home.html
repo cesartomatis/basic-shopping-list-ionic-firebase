@@ -20,15 +20,37 @@
 
 
 <ion-content padding>
-  <ion-list>
+  <ion-list *ngIf="notDoneList.length > 0">
     <ion-list-header>
       Items
     </ion-list-header>
-    <ion-item *ngFor="let item of shoppingList$ | async"
-      detail-push
-      navPush="EditShoppingItemPage"
-      [navParams]="{item: item}">
+    <ion-item *ngFor="let item of notDoneList">
+      <ion-icon name="create"
+        item-start
+        navPush="EditShoppingItemPage"
+        [navParams]="{item: item}">
+      </ion-icon>
       {{item.name}} - {{item.quantity}}
+      <ion-icon name="checkmark-circle"
+        item-end
+        (click)="onDone(item)">
+      </ion-icon>
+    </ion-item>
+  </ion-list>
+  <br>
+  <ion-list *ngIf="doneList.length > 0">
+    <ion-list-header>
+      Done
+    </ion-list-header>
+    <ion-item *ngFor="let item of doneList">
+      <ion-icon name="trash"
+        item-start
+        (click)="onDelete(item)">
+      </ion-icon>
+      <del>{{item.name}} - {{item.quantity}}</del>
+      <ion-icon name="undo"
+        item-end
+        (click)="onUndone(item)"></ion-icon>
     </ion-item>
   </ion-list>
 </ion-content>

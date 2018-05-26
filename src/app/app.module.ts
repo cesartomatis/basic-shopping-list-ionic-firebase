@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { HeaderColor } from '@ionic-native/header-color';
 
 import { FIREBASE_CONFIG } from '../config/fbConfig';
 import { MyApp } from './app.component';
@@ -26,7 +27,8 @@ import { ToastService } from '../services/toast/toast.service';
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     ShoppingListService,
-    ToastService
+    ToastService,
+    HeaderColor
   ]
 })
 export class AppModule {}
