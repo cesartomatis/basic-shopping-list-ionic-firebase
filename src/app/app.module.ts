@@ -6,6 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { HeaderColor } from '@ionic-native/header-color';
+import { AppMinimize } from '@ionic-native/app-minimize';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 import { FIREBASE_CONFIG } from '../config/fbConfig';
 import { MyApp } from './app.component';
@@ -28,7 +30,9 @@ import { ToastService } from '../services/toast/toast.service';
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     ShoppingListService,
     ToastService,
-    HeaderColor
+    HeaderColor,
+    AppMinimize,
+    ScreenOrientation
   ]
 })
 export class AppModule {}

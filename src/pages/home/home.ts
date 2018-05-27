@@ -19,8 +19,6 @@ import { ToastService } from '../../services/toast/toast.service';
 })
 export class HomePage {
   shoppingList$: Observable<Array<Item>>;
-  notDoneList: Array<Item> = new Array<Item>();
-  doneList: Array<Item> = new Array<Item>();
 
   constructor(
     public navCtrl: NavController,
@@ -29,7 +27,7 @@ export class HomePage {
     private svToast: ToastService
   ) {}
 
-  ionViewDidLoad() {
+  ionViewWillEnter() {
     this.refreshList();
   }
 
@@ -41,38 +39,16 @@ export class HomePage {
       .map(changes =>
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
       );
-
-    this.notDoneList = new Array<Item>();
-    this.doneList = new Array<Item>();
-    this.shoppingList$.subscribe((items: Array<Item>) =>
-      items.map(item => {
-        if (!item.done) {
-          this.notDoneList.push(item);
-        } else {
-          this.doneList.push(item);
-        }
-      })
-    );
   }
 
   async onDone(item: Item) {
     item.done = true;
     await this.svShoppingList.editItem(item);
-    // this.refreshList();
-    this.navCtrl.setRoot('HomePage');
-    // this.notDoneList.push(item);
-    // let index = this.doneList.findIndex(i => i.key === item.key);
-    // this.doneList.slice(index, 1);
   }
 
   async onUndone(item: Item) {
     item.done = false;
     await this.svShoppingList.editItem(item);
-    // this.refreshList();
-    this.navCtrl.setRoot('HomePage');
-    // this.doneList.push(item);
-    // let index = this.notDoneList.findIndex(i => i.key === item.key);
-    // this.notDoneList.slice(index, 1);
   }
 
   async onDelete(item) {
