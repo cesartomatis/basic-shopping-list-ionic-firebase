@@ -8,11 +8,13 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { HeaderColor } from '@ionic-native/header-color';
 import { AppMinimize } from '@ionic-native/app-minimize';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { AdMobFree } from '@ionic-native/admob-free';
 
 import { FIREBASE_CONFIG } from '../config/fbConfig';
 import { MyApp } from './app.component';
 import { ShoppingListService } from '../services/shopping-list/shopping-list.service';
 import { ToastService } from '../services/toast/toast.service';
+import { AdmobAddsProvider } from '../providers/admob-adds/admob-adds';
 
 @NgModule({
   declarations: [MyApp],
@@ -32,7 +34,9 @@ import { ToastService } from '../services/toast/toast.service';
     ToastService,
     HeaderColor,
     AppMinimize,
-    ScreenOrientation
+    ScreenOrientation,
+    AdMobFree,
+    AdmobAddsProvider
   ]
 })
 export class AppModule {}
